@@ -1,0 +1,58 @@
+<h3>Signup Form</h3>
+<!-- ngForm cung cấp phương thức làm việc với form -->
+
+<pre>{{signupForm.value | json}}</pre>
+<form #signupForm="ngForm" class="form-container" (ngSubmit)="handleSignup()">
+    <mat-form-field class="example-full-width">
+        <mat-label>Tài Khoản</mat-label>
+        <input matInput name="taiKhoan" ngModel #taiKhoan="ngModel" required minlength="5" maxlength="12">
+        <mat-error *ngIf="taiKhoan.invalid">
+            <!-- Nếu k xài thư viện phải tự handle các trường hợp touched và dirty
+                <div *ngIf="taiKhoan.invalid && (taiKhoan.dirty || taiKhoan.touched)">
+                    Tài khoản không được để trống
+                </div> -->
+            <span *ngIf="taiKhoan.errors?.required">
+                Tài khoản không được để trống
+            </span>
+            <span *ngIf="taiKhoan.errors?.minlength || taiKhoan.errors?.maxlength">
+                Tài khoản phải từ 5 đến 12 kí tự
+            </span>
+        </mat-error>
+        <pre>{{taiKhoan.errors|json}}</pre>
+    </mat-form-field>
+    <mat-form-field class="example-full-width">
+        <mat-label>Mật Khẩu</mat-label>
+        <input matInput name="matKhau" ngModel #matKhau="ngModel" required>
+        <mat-error *ngIf="matKhau.invalid">
+            <span *ngIf="matKhau.errors?.required">Mật khẩu không được để trống</span>
+        </mat-error>
+    </mat-form-field>
+    <mat-form-field class="example-full-width">
+        <mat-label>Email</mat-label>
+       <input matInput name="email" ngModel #email="ngModel" required 
+       pattern="^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$"
+        >
+   
+    <input matInput name="email" ngModel #email="ngModel" required>
+        <mat-error *ngIf="email.invalid">
+            <span *ngIf="email.errors?.required">Email không được để trống</span>
+            <span *ngIf="email.errors?.pattern">Email không hợp lệ</span>
+        </mat-error>
+    </mat-form-field>
+    <mat-form-field class="example-full-width">
+        <mat-label>Họ Tên</mat-label>
+        <input matInput name="hoTen" ngModel #hoTen="ngModel" required>
+        <mat-error *ngIf="hoTen.invalid">
+            <span *ngIf="hoTen.errors?.required">Mật khẩu không được để trống</span>
+        </mat-error>
+    </mat-form-field>
+    <mat-form-field class="example-full-width">
+        <mat-label>Số Điện Thoại</mat-label>
+        <input matInput name="soDt" ngModel #soDt="ngModel" required>
+        <mat-error *ngIf="soDt.invalid">
+            <span *ngIf="soDt.errors?.required">Số điện thoại không được để trống</span>
+        </mat-error>
+    </mat-form-field>
+
+    <button [disabled]='signupForm.invalid'>Đăng ký</button>
+</form>

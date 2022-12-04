@@ -1,0 +1,24 @@
+<div class="bg-secondary">
+    <div class="d-flex px-4 py-2 justify-content-between">
+        <div class="text-warning">
+            CyberCinema
+        </div>
+        <div class="d-flex">
+            <p class="mr-2">
+                <a routerLink="/">Home</a>
+            </p>
+            <p class="mr-2">
+                <a routerLink="/movie">Movie</a>
+            </p>
+            <p class="mr-2">
+                <a routerLink="/checkout">Checkout</a>
+            </p>
+        </div>
+    </div>
+
+    <div *ngIf="currentUser">
+        {{ currentUser?.hoTen }}
+    </div>
+</div>
+
+<router-outlet></router-outlet>

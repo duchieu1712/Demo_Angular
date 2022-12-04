@@ -1,0 +1,14 @@
+<mat-grid-list cols="4">
+    <mat-grid-tile *ngFor="let movie of movieList">
+        <mat-card class="example-card">
+            <img mat-card-image height="300px" [src]="movie.hinhAnh" />
+            <mat-card-content>
+                <p>{{ movie.tenPhim }}</p>
+                <p>{{ movie.moTa }}</p>
+            </mat-card-content>
+            <mat-card-actions>
+                <button mat-raised-button color="primary" routerLink="/movie/{{movie.maPhim}}">Chi tiết</button>
+            </mat-card-actions>
+        </mat-card>
+    </mat-grid-tile>
+</mat-grid-list>

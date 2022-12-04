@@ -1,0 +1,23 @@
+<h3>Signin Form</h3>
+
+<pre>{{signinForm.value|json}}</pre>
+<form [formGroup]='signinForm' (ngSubmit)='handleSignin()'>
+    <mat-form-field class="example-full-width">
+        <mat-label>Tài Khoản</mat-label>
+        <input matInput formControlName='taiKhoan'>
+        <mat-error *ngIf="signinForm.get('taiKhoan')?.invalid">
+            <span *ngIf="signinForm.get('taiKhoan')?.errors?.required">
+                Tài Khoản ko đc để trống
+            </span>
+            <span *ngIf="signinForm.get('taiKhoan')?.errors?.minlength || signinForm.get('taiKhoan')?.errors?.maxlength">
+                Tài Khoản phải từ 3 đến 20 ký tự
+            </span>
+        </mat-error>
+    </mat-form-field>
+
+    <mat-form-field class="example-full-width">
+        <mat-label>Mật Khẩu</mat-label>
+        <input matInput formControlName='matKhau'>
+    </mat-form-field>
+    <button>Đăng nhập</button>
+</form>
